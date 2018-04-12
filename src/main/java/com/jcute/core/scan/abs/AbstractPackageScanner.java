@@ -34,10 +34,14 @@ public abstract class AbstractPackageScanner implements PackageScanner{
 		if(this.pathMatcher.isPattern(pattern)){
 			this.patterns.add(pattern);
 		}else{
-			if(pattern.endsWith(".")){
-				this.patterns.add(String.format("%s**",pattern));
+			if("".equals(pattern)){
+				this.patterns.add("*.*");
 			}else{
-				this.patterns.add(String.format("%s.**",pattern));
+				if(pattern.endsWith(".")){
+					this.patterns.add(String.format("%s**",pattern));
+				}else{
+					this.patterns.add(String.format("%s.**",pattern));
+				}
 			}
 		}
 	}

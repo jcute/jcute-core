@@ -127,7 +127,7 @@ public class DefaultPackageScanner extends AbstractPackageScanner implements Fil
 				continue;
 			}
 			if(childFile.isDirectory()){// 如果扫描到的文件类型为目录,则继续调用次方法扫描
-				this.doSearchForDir(classes,childFile.getPath(),root);// 递归遍历的过程
+				this.doSearchForDir(classes,childFile.getPath(),root+"/"+childFile.getName());// 递归遍历的过程
 			}else{
 				String filePath = childFile.getPath();
 				if(filePath.indexOf("\\") != -1){
@@ -137,9 +137,12 @@ public class DefaultPackageScanner extends AbstractPackageScanner implements Fil
 				if(StringUtil.isBlank(root)){
 					className = childFile.getName();
 				}else{
-					className = filePath.substring(filePath.indexOf(root));
+					className = root + "/" + filePath.substring(path.length() + 1);
 				}
 				className = className.substring(0,className.length() - 6);
+				if(className.startsWith("/")){
+					className = className.substring(1);
+				}
 				if(!this.doMatch(className)){
 					continue;
 				}

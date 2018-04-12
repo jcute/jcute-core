@@ -40,7 +40,7 @@ public class ClassUtil{
 		}
 		try{
 			return Class.forName(packageName,true,targetClassLoader);
-		}catch(ClassNotFoundException e){
+		}catch(Throwable e){
 			return null;
 		}
 	}
