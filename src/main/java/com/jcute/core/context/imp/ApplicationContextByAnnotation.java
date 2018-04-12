@@ -38,8 +38,10 @@ public class ApplicationContextByAnnotation extends AbstractApplicationContext{
 
 	@Override
 	protected void doInitial() throws ContextInitialException{
-
-		String packageName = this.runnerClass.getPackage().getName();
+		String packageName = "";
+		if(null != this.runnerClass.getPackage()){
+			packageName = this.runnerClass.getPackage().getName();
+		}
 		BeanFactory beanFactory = this.getBeanFactory();
 		BeanFactoryProcessor beanFactoryProcessor = beanFactory.getBeanFactoryProcessor();
 		PackageScannerFilter packageScannerFilter = (PackageScannerFilter)beanFactoryProcessor;

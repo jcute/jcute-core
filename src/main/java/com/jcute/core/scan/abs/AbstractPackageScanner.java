@@ -28,7 +28,7 @@ public abstract class AbstractPackageScanner implements PackageScanner{
 
 	@Override
 	public void addPattern(String pattern){
-		if(StringUtil.isBlank(pattern)){
+		if(null == pattern){
 			throw new IllegalArgumentException("Pattern must not be null");
 		}
 		if(this.pathMatcher.isPattern(pattern)){
