@@ -7,7 +7,7 @@
 	<artifactId>jcute-core</artifactId>
 	<version>0.0.3</version>
 	<name>jcute-core</name>
-	<url>https://github.com/jcute</url>
+	<url>https://github.com/jcute/jcute-core</url>
 	<description>An IOC/AOP Framework</description>
 	<properties>
 		<!-- project config -->
@@ -15,7 +15,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<project.version>0.0.2</project.version>
 
 		<!-- maven plugin config -->
 		<maven.compiler.version>2.5.1</maven.compiler.version>
@@ -152,15 +151,15 @@
 		</license>
 	</licenses>
 	<scm>
-		<url>https://github.com/jcute/jcute</url>
-		<connection>https://github.com/jcute/jcute.git</connection>
-		<developerConnection>https://github.com/jcute/jcute</developerConnection>
+		<url>https://github.com/jcute/jcute-core</url>
+		<connection>https://github.com/jcute/jcute-core.git</connection>
+		<developerConnection>https://github.com/jcute/jcute-core</developerConnection>
 	</scm>
 	<developers>
 		<developer>
 			<name>TangBin</name>
 			<email>191817533@qq.com</email>
-			<url>https://github.com/jcute</url>
+			<url>https://github.com/jcute/jcute-core</url>
 		</developer>
 	</developers>
 
