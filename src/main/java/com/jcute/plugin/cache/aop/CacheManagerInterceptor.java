@@ -7,7 +7,6 @@ import java.util.Map;
 
 import com.jcute.core.annotation.Autowired;
 import com.jcute.core.annotation.Component;
-import com.jcute.core.annotation.Initial;
 import com.jcute.core.annotation.Interceptor;
 import com.jcute.core.context.ApplicationContext;
 import com.jcute.core.error.ContextInitialException;
@@ -34,21 +33,14 @@ public class CacheManagerInterceptor implements Proxy{
 	private Map<Class<?>,CacheManager> mappingCacheManagers = new HashMap<Class<?>,CacheManager>();
 	private CacheKeyPolicy cacheKeyPolicy = new JavaScriptCacheKeyPolicy();
 	
-	@Autowired
-	private ApplicationContext applicationContext;
-
-	@Initial
-	public void initial() throws ContextInitialException{
-
+	public CacheManagerInterceptor(@Autowired ApplicationContext applicationContext) throws ContextInitialException {
 		this.cacheManagers.clear();
-		this.cacheManagers.putAll(this.applicationContext.getBeans(CacheManager.class));
-
+		this.cacheManagers.putAll(applicationContext.getBeans(CacheManager.class));
 		if(this.cacheManagers.isEmpty()){
 			throw new ContextInitialException("CacheManager not found");
 		}
-		
 	}
-
+	
 	@Override
 	public Object execute(ProxyChain proxyChain) throws Throwable{
 		Class<?> targetClass = proxyChain.getTargetClass();
@@ -60,7 +52,6 @@ public class CacheManagerInterceptor implements Proxy{
 				return proxyChain.doProxyChain();
 			}
 			Object cacheKey = this.resolveCacheKey(targetClass,targetMethod,targetParams);
-			System.out.println(cacheKey);
 			if(AnnotationUtil.hasAnnotation(targetMethod,CachePut.class)){
 				if(null == cacheKey){
 					return proxyChain.doProxyChain();
