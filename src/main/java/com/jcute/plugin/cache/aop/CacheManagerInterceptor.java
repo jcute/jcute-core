@@ -24,6 +24,7 @@ import com.jcute.plugin.cache.CacheManager;
 import com.jcute.plugin.cache.CachePut;
 import com.jcute.plugin.cache.Cacheable;
 import com.jcute.plugin.cache.imp.DefaultCacheManager;
+import com.jcute.plugin.cache.imp.JavaScriptCacheKeyPolicy;
 
 @Component
 @Interceptor(annotations = Cacheable.class)
