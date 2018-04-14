@@ -344,22 +344,21 @@ public class BeanFactoryProcessorByAnnotation extends AbstractBeanFactoryProcess
 		}else if(beanDefinition instanceof BeanDefinitionByClass){
 			Constructor<?> beanConstructor = this.getBeanConstructor(beanDefinition.getBeanType());
 			Class<?>[] parameterTypes = beanConstructor.getParameterTypes();
-			if(null == parameterTypes || parameterTypes.length == 0){
-				directedGraph.addNode(beanDefinition);
-				return;
-			}
-			// 添加构造函数依赖
-			Annotation[] annotations = AnnotationUtil.getAnnotation(parameterTypes,beanConstructor.getParameterAnnotations(),Autowired.class);
-			for(int i = 0;i < parameterTypes.length;i++){
-				if(null == annotations[i]){
-					continue;
+			if(null != parameterTypes && parameterTypes.length > 0) {
+				// 添加构造函数依赖
+				Annotation[] annotations = AnnotationUtil.getAnnotation(parameterTypes,beanConstructor.getParameterAnnotations(),Autowired.class);
+				for(int i = 0;i < parameterTypes.length;i++){
+					if(null == annotations[i]){
+						continue;
+					}
+					Class<?> parameterType = parameterTypes[i];
+					Autowired autowired = (Autowired)annotations[i];
+					String beanName = autowired.value();
+					BeanDefinition dependencyBeanDefinition = beanFactory.getBeanDefinition(parameterType,beanName);
+					directedGraph.addEdge(beanDefinition,dependencyBeanDefinition);
 				}
-				Class<?> parameterType = parameterTypes[i];
-				Autowired autowired = (Autowired)annotations[i];
-				String beanName = autowired.value();
-				BeanDefinition dependencyBeanDefinition = beanFactory.getBeanDefinition(parameterType,beanName);
-				directedGraph.addEdge(beanDefinition,dependencyBeanDefinition);
 			}
+			directedGraph.addNode(beanDefinition);
 		}
 	}
 
