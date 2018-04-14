@@ -68,10 +68,8 @@ public class CacheManagerInterceptor implements Proxy{
 				Cache cache = this.searchCache(cacheManager,targetClass,targetMethod);
 				CachePut cachePut = AnnotationUtil.getAnnotation(targetMethod,CachePut.class);
 				if(cache.containsKey(cacheKey)){
-					System.err.println("命中:" + cacheKey);
 					return cache.getValue(cacheKey,Object.class);
 				}
-				System.err.println("未命中:" + cacheKey);
 				Object result = proxyChain.doProxyChain();
 				cache.putValue(cacheKey,result,cachePut.cacheExpiry());
 				return result;
