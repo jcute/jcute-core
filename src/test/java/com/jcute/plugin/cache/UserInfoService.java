@@ -6,7 +6,7 @@ import com.jcute.core.annotation.Component;
 @Cacheable(cacheName="userInfo")
 public class UserInfoService{
 	
-	@CachePut(cacheKey="asd",cacheExpiry=5000)//有效期5秒
+	@CachePut(cacheKey="targetMethod.getName()",cacheExpiry=5000)//有效期5秒
 	public String getName(){
 		return "UserInfoService";
 	}
