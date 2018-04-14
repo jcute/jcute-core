@@ -19,6 +19,7 @@ import com.jcute.plugin.cache.Cache;
 import com.jcute.plugin.cache.CacheClear;
 import com.jcute.plugin.cache.CacheEvict;
 import com.jcute.plugin.cache.CacheKey;
+import com.jcute.plugin.cache.CacheKeyPolicy;
 import com.jcute.plugin.cache.CacheManager;
 import com.jcute.plugin.cache.CachePut;
 import com.jcute.plugin.cache.Cacheable;
@@ -30,7 +31,8 @@ public class CacheManagerInterceptor implements Proxy{
 
 	private Map<String,CacheManager> cacheManagers = new HashMap<String,CacheManager>();
 	private Map<Class<?>,CacheManager> mappingCacheManagers = new HashMap<Class<?>,CacheManager>();
-
+	private CacheKeyPolicy cacheKeyPolicy = new JavaScriptCacheKeyPolicy();
+	
 	@Autowired
 	private ApplicationContext applicationContext;
 
@@ -43,7 +45,7 @@ public class CacheManagerInterceptor implements Proxy{
 		if(this.cacheManagers.isEmpty()){
 			throw new ContextInitialException("CacheManager not found");
 		}
-
+		
 	}
 
 	@Override
@@ -56,10 +58,10 @@ public class CacheManagerInterceptor implements Proxy{
 			if(null == cacheManager){
 				return proxyChain.doProxyChain();
 			}
-			String cacheKey = this.resolveCacheKey(targetClass,targetMethod,targetParams);
+			Object cacheKey = this.resolveCacheKey(targetClass,targetMethod,targetParams);
 			System.out.println(cacheKey);
 			if(AnnotationUtil.hasAnnotation(targetMethod,CachePut.class)){
-				if(StringUtil.isBlank(cacheKey)){
+				if(null == cacheKey){
 					return proxyChain.doProxyChain();
 				}
 				Cache cache = this.searchCache(cacheManager,targetClass,targetMethod);
@@ -73,7 +75,7 @@ public class CacheManagerInterceptor implements Proxy{
 				cache.putValue(cacheKey,result,cachePut.cacheExpiry());
 				return result;
 			}else if(AnnotationUtil.hasAnnotation(targetMethod,CacheEvict.class)){
-				if(StringUtil.isBlank(cacheKey)){
+				if(null == cacheKey){
 					return proxyChain.doProxyChain();
 				}
 				Cache cache = this.searchCache(cacheManager,targetClass,targetMethod);
@@ -95,7 +97,7 @@ public class CacheManagerInterceptor implements Proxy{
 	}
 
 	// ${}
-	private String resolveCacheKey(Class<?> targetClass,Method targetMethod,Object[] targetParams){
+	private Object resolveCacheKey(Class<?> targetClass,Method targetMethod,Object[] targetParams){
 		String cacheKey = null;
 		if(AnnotationUtil.hasAnnotation(targetMethod,CachePut.class)){
 			CachePut cachePut = AnnotationUtil.getAnnotation(targetMethod,CachePut.class);
@@ -122,19 +124,14 @@ public class CacheManagerInterceptor implements Proxy{
 				if(null == annotations[i]){
 					continue;
 				}
-				CacheKey ck = (CacheKey)annotations[i];
+				CacheKey ck = (CacheKey) annotations[i];
 				if(StringUtil.isBlank(ck.value())){
 					continue;
 				}
 				context.put(ck.value(),targetParams[i]);
 			}
 		}
-		return null;
-		// Object result = AviatorEvaluator.execute(cacheKey,context);
-		// if(null == result){
-		// return cacheKey;
-		// }
-		// return result.toString();
+		return this.cacheKeyPolicy.getCacheKey(context,cacheKey);
 	}
 
 	// 查询指定的缓存对象
