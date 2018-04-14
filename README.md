@@ -1,7 +1,9 @@
 ### JCute 是什么
+
 jcue是一套功能类似Spring的开源框架，实现了Spring的大部分功能，但用法相对Spring要简洁，整体采用注解方式，代码清晰，功能灵活，用户也可扩展基于xml文件或json等配置文件的注入方式。
 jcute除了包含基本的IOC/AOP等功能外，还提供了基于注解的插件扩展机制，用户可以像使用spring boot一样扩展jcute，为jcute创建更丰富的插件来满足业务需求。
 jcute内置了ShutDownHook，Cache，Transactional基本插件。
+
 ### JCute有哪些注解
 | 注解      | 功能描述 |
 | --------- | -----|
@@ -16,10 +18,14 @@ jcute内置了ShutDownHook，Cache，Transactional基本插件。
 | @Order     |   排序注解，可与@Destory，@Initial，@Interceptor配合使用 |
 | @Property      |    属性注入注解，用来注入配置文件中的属性只支持默认值 |
 | @Pluggable     |   自定义插件扩展注解 |
+
 ###功能使用
+
 由于功能介绍篇幅较大，此处不一一介绍，有兴趣的朋友可以到https://github.com/jcute/jcute-samples
 查看，此sample项目罗列了jcute的大部分功能。
+
 ###如何使用
+
 + maven
 	```xml
 	<dependency>
@@ -28,7 +34,7 @@ jcute内置了ShutDownHook，Cache，Transactional基本插件。
 		<version>0.0.4</version>
 	</dependency>
 	```
-+  gradle
++ gradle
 	```xml
 	compile group: 'com.github.jcute', name: 'jcute-core', version: '0.0.4'
 	```
