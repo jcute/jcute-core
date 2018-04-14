@@ -11,7 +11,7 @@ jcute内置了ShutDownHook，Cache，Transactional基本插件。
 | @ImportConfig  | 配置文件导入注解 |
 | @Autowired  | 动态注入注解 |
 | @Component     |   注入标记注解，标记此注解的类将被实例化 |
-| @ComponentScan      |    包扫描注解，可在配置类@Configuration的类上标记此注解 |
+| @ComponentScan      |    包扫描注解，可在配置了@Configuration的类上标记此注解 |
 | @Destory     |   销毁方法标记注解每标记此注解容器销毁前调用 |
 | @Initial      |    初始化方法标记注解，属性及对象注入结束后首先调用此注解 |
 | @Interceptor  | 拦截器注解 |
@@ -23,6 +23,16 @@ jcute内置了ShutDownHook，Cache，Transactional基本插件。
 
 由于功能介绍篇幅较大，此处不一一列举，有兴趣的朋友可以到https://github.com/jcute/jcute-samples
 查看，此sample项目罗列了jcute的大部分功能。
+```java
+	@Configuration
+	public class TestBootStrap{
+		
+		public static void main(String[] args){
+			JCuteApplication.run(TestBootStrap.class);
+		}
+		
+	}
+```
 
 ### 如何使用
 
