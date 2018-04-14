@@ -294,7 +294,8 @@ public class BeanFactoryProcessorByAnnotation extends AbstractBeanFactoryProcess
 			result.add(beanDefinition);
 		}
 		if(null != result && result.size() > 0){
-			logger.debug("Found interceptos {} -> {}",beanType.getName(),result);
+			logger.debug("Found interceptor {} -> {}",beanType.getName(),result);
+			
 		}
 		return result.toArray(new BeanDefinition[result.size()]);
 	}
