@@ -23,6 +23,7 @@ public class EnableShutDownHookPlugin extends Plugin implements Runnable{
 
 	@Override
 	public void onBeforeInitial() throws ContextInitialException{
+		final EnableShutDownHook enableShutDownHook = this.getAnnotation();
 		final ApplicationContext applicationContext = this.getApplicationContext();
 		Runtime.getRuntime().addShutdownHook(new Thread("nix-destory") {
 			@Override
@@ -40,7 +41,9 @@ public class EnableShutDownHookPlugin extends Plugin implements Runnable{
 				}
 			}
 		});
-		new Thread(this,"jcute-watting").start();
+		if(enableShutDownHook.value()){
+			new Thread(this,"jcute-watting").start();
+		}
 	}
 
 	@Override

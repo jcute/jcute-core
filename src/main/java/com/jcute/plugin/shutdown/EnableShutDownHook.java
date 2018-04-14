@@ -12,6 +12,10 @@ import com.jcute.core.annotation.Pluggable;
 @Pluggable(EnableShutDownHookPlugin.class)
 public @interface EnableShutDownHook{
 	
-	
+	/**
+	 * 默认是否等待
+	 * @return
+	 */
+	public boolean value() default false;
 	
 }
