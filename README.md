@@ -19,12 +19,12 @@ jcute内置了ShutDownHook，Cache，Transactional基本插件。
 | @Property      |    属性注入注解，用来注入配置文件中的属性只支持默认值 |
 | @Pluggable     |   自定义插件扩展注解 |
 
-###功能使用
+### 功能使用
 
 由于功能介绍篇幅较大，此处不一一介绍，有兴趣的朋友可以到https://github.com/jcute/jcute-samples
 查看，此sample项目罗列了jcute的大部分功能。
 
-###如何使用
+### 如何使用
 
 + maven
 	```xml
