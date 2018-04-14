@@ -24,14 +24,14 @@ jcute内置了ShutDownHook，Cache，Transactional基本插件。
 由于功能介绍篇幅较大，此处不一一列举，有兴趣的朋友可以到https://github.com/jcute/jcute-samples
 查看，此sample项目罗列了jcute的大部分功能。
 ```java
-	@Configuration
-	public class TestBootStrap{
-		
-		public static void main(String[] args){
-			JCuteApplication.run(TestBootStrap.class);
-		}
-		
+@Configuration
+public class TestBootStrap{
+
+	public static void main(String[] args){
+		JCuteApplication.run(TestBootStrap.class);
 	}
+
+}
 ```
 
 ### 如何使用
