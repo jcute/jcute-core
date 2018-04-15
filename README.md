@@ -47,6 +47,7 @@ public class TestBootStrap{
 | com.jcute.sample.initial  | 初始化方法使用案例 |
 | com.jcute.sample.junit  | JUnit无缝集成案例 |
 | com.jcute.sample.service  | 普通service及接口实例案例 |
+| com.jcute.sample.scope | 自定义Bean的Scope |
 | com.jcute.sample.plugin.cache  | 缓存插件使用案例 |
 | com.jcute.sample.plugin.shutdownhook  | 友好退出插件使用案例 |
 
