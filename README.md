@@ -2,7 +2,7 @@
 
 jcue是一套功能类似Spring的开源框架，实现了Spring的大部分功能，但用法相对Spring要简洁，整体采用注解方式，代码清晰，功能灵活，用户也可扩展基于xml文件或json等配置文件的注入方式。
 jcute除了包含基本的IOC/AOP等功能外，还提供了基于注解的插件扩展机制，用户可以像使用spring boot一样扩展jcute，为jcute创建更丰富的插件来满足业务需求。
-jcute内置了ShutDownHook，Cache，Transactional基本插件。
+jcute内置了ShutDownHook，Cache基本插件。
 
 ### JCute有哪些注解
 | 注解      | 功能描述 |
@@ -33,6 +33,23 @@ public class TestBootStrap{
 
 }
 ```
+#### jcute-samples代码介绍
+| 包名      | 功能描述 |
+| --------- | -----|
+| com.jcute.sample.aspect  | AOP相关功能使用案例 |
+| com.jcute.sample.boot  | JCuteBoot使用案例 |
+| com.jcute.sample.config  | 配置注入案例 |
+| com.jcute.sample.construct  | 自定义构造函数注入案例 |
+| com.jcute.sample.define.fromclass  | 使用class实例Bean案例 |
+| com.jcute.sample.define.frominstance  | 使用object实例Bean案例 |
+| com.jcute.sample.define.frommethod  | 使用method实例Bean案例 |
+| com.jcute.sample.destory  | 销毁方法使用案例 |
+| com.jcute.sample.initial  | 初始化方法使用案例 |
+| com.jcute.sample.junit  | JUnit无缝集成案例 |
+| com.jcute.sample.service  | 普通service及接口实例案例 |
+| com.jcute.sample.plugin.cache  | 缓存插件使用案例 |
+| com.jcute.sample.plugin.shutdownhook  | 友好退出插件使用案例 |
+
 
 ### 如何使用
 
