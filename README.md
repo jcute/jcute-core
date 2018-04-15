@@ -33,6 +33,23 @@ public class TestBootStrap{
 
 }
 ```
+#### jcute-samples代码介绍
+| 包名      | 功能描述 |
+| --------- | -----|
+| com.jcute.sample.aspect  | AOP相关功能使用案例 |
+| com.jcute.sample.boot  | JCuteBoot使用案例 |
+| com.jcute.sample.config  | 配置注入案例 |
+| com.jcute.sample.construct  | 自定义构造函数注入案例 |
+| com.jcute.sample.define.fromclass  | 使用class实例Bean案例 |
+| com.jcute.sample.define.frominstance  | 使用object实例Bean案例 |
+| com.jcute.sample.define.frommethod  | 使用method实例Bean案例 |
+| com.jcute.sample.destory  | 销毁方法使用案例 |
+| com.jcute.sample.initial  | 初始化方法使用案例 |
+| com.jcute.sample.junit  | JUnit无缝集成案例 |
+| com.jcute.sample.service  | 普通service及接口实例案例 |
+| com.jcute.sample.plugin.cache  | 缓存插件使用案例 |
+| com.jcute.sample.plugin.shutdownhook  | 友好退出插件使用案例 |
+
 
 ### 如何使用
 
@@ -53,3 +70,10 @@ public class TestBootStrap{
 	需要手动下载jar添加到项目的classpath中
 	下载地址：https://oss.sonatype.org/service/local/repositories/releases/content/com/github/jcute/jcute-core/0.0.4/jcute-core-0.0.4.jar
 	```
+
+### 插件介绍
+
++ EnableShutDownHook 插件
+	需要添加@EnableShutDownHook注解，此插件实现优化退出功能，可为注解配置value设置是否等待程序结束
++ EnableCacheManager 插件
+	需要添加@EnableCacheManager注解，开启缓存机制，额外提供@Cacheable，@CacheClear，@CacheEvict，@CachePut，@CacheKey等注解，如果你使用过spring的cache功能，相信你会对此比较熟悉。具体使用案例参照jcute-samples项目中的使用案例
