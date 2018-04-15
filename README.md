@@ -2,7 +2,7 @@
 
 jcue是一套功能类似Spring的开源框架，实现了Spring的大部分功能，但用法相对Spring要简洁，整体采用注解方式，代码清晰，功能灵活，用户也可扩展基于xml文件或json等配置文件的注入方式。
 jcute除了包含基本的IOC/AOP等功能外，还提供了基于注解的插件扩展机制，用户可以像使用spring boot一样扩展jcute，为jcute创建更丰富的插件来满足业务需求。
-jcute内置了ShutDownHook，Cache，Transactional基本插件。
+jcute内置了ShutDownHook，Cache基本插件。
 
 ### JCute有哪些注解
 | 注解      | 功能描述 |
