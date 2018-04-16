@@ -60,17 +60,17 @@ public class TestBootStrap{
 	<dependency>
 		<groupId>com.github.jcute</groupId>
 		<artifactId>jcute-core</artifactId>
-		<version>0.0.4</version>
+		<version>0.0.5</version>
 	</dependency>
 	```
 + gradle
 	```xml
-	compile group: 'com.github.jcute', name: 'jcute-core', version: '0.0.4'
+	compile group: 'com.github.jcute', name: 'jcute-core', version: '0.0.5'
 	```
 + java
 	```xml
 	需要手动下载jar添加到项目的classpath中
-	下载地址：https://oss.sonatype.org/service/local/repositories/releases/content/com/github/jcute/jcute-core/0.0.4/jcute-core-0.0.4.jar
+	下载地址：https://oss.sonatype.org/service/local/repositories/releases/content/com/github/jcute/jcute-core/0.0.4/jcute-core-0.0.5.jar
 	```
 
 ### 插件介绍

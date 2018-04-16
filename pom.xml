@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.jcute</groupId>
 	<artifactId>jcute-core</artifactId>
-	<version>0.0.4</version>
+	<version>0.0.5</version>
 	<name>jcute-core</name>
 	<url>https://github.com/jcute/jcute-core</url>
 	<description>An IOC/AOP Framework</description>
