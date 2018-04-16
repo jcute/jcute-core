@@ -70,7 +70,7 @@ public class TestBootStrap{
 + java
 	```xml
 	需要手动下载jar添加到项目的classpath中
-	下载地址：https://oss.sonatype.org/service/local/repositories/releases/content/com/github/jcute/jcute-core/0.0.4/jcute-core-0.0.5.jar
+	下载地址：https://oss.sonatype.org/service/local/repositories/releases/content/com/github/jcute/jcute-core/0.0.5/jcute-core-0.0.5.jar
 	```
 
 ### 插件介绍
