@@ -137,7 +137,7 @@ public class DefaultPackageScanner extends AbstractPackageScanner implements Fil
 				if(StringUtil.isBlank(root)){
 					className = childFile.getName();
 				}else{
-					className = root + "/" + filePath.substring(path.length() + 1);
+					className = root + "/" + filePath.substring(path.length());
 				}
 				className = className.substring(0,className.length() - 6);
 				if(className.startsWith("/")){
